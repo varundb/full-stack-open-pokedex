@@ -6,11 +6,13 @@ import ErrorMessage from './ErrorMessage'
 import PokemonPage from './PokemonPage'
 import PokemonList from './PokemonList'
 
-const mapResults = (({ results }) => results.map(({ url, name }) => ({
-  url,
-  name,
-  id: parseInt(url.match(/\/(\d+)\//)[1])
-})))
+const mapResults = (({ results }) => results.map(({ url, name }) => {
+  return ({
+    url,
+    name,
+    id: parseInt(url.match(/\/(\d+)\//)[1])
+  })
+}))
 
 const App = () => {
   const match = useMatch('/pokemon/:name')
@@ -25,6 +27,8 @@ const App = () => {
 
   let next = null
   let previous = null
+
+  console.log(pokemonList)
 
   if (match && match.params) {
     const pokemonId = pokemonList.find(({ name }) => name === match.params.name).id
