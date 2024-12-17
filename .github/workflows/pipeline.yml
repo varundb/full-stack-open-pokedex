@@ -24,3 +24,7 @@ jobs:
         run: npm run build
       - name: test
         run: npm run test
+      - name: Bump version and push tag
+        uses: anothrNick/github-taf-action@1.64.0
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
